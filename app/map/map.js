@@ -9,12 +9,14 @@ angular.module('myApp.map', ['ngRoute'])
   });
 }])
 
+
+
+
 .controller('MapController', function($scope) {
 
-  $scope.circle = {};
-  $scope.circle.doClick = function () {
+  var circle = {};
 
-
+  $scope.circle = function doClick () {
 
 // start scale and transition example
 
