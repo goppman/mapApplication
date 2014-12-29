@@ -31,24 +31,37 @@
   <div class="row">
     <div class="col-xs-12">
       <header>
-        <div class="well">Notely</div>
+        <div class="well">Notely
+          <ul class="list-inline">
+            <li><a href="#map"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#view1"><i class="view1"></i> view1</a></li>
+            <li><a href="#view2"><i class="view2"></i> view2</a></li>
+          </ul>
+        </div>
       </header>
     </div>
   </header>
   <div class="container">
     <div class="row">
       <div class="col-xs-4">
-        <nav id="sidebar">
+        <nav id="sidebar" >
           <div class="well">
             SIDEBAR
+            <ul >
+              <button ng-click="circle.doClick()"> circle anim</button>
+            </ul>
+
           </div>
         </nav>
       </div>
       <div class="col-xs-8">
-        <main>
+        <main >
           <div class="well">
             <!-- BEGIN main content -->
-            <div ng-view></div>
+            <div id="main" ng-view ng-show="visible">
+
+
+            </div>
             <!-- END main content -->
           </div>
         </main>
@@ -61,7 +74,9 @@
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
   <script src="app.js"></script>
+  <script src="map/map.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="components/version/version.js"></script>
