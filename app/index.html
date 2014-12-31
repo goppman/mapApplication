@@ -31,7 +31,7 @@
   <div class="row">
     <div class="col-xs-12">
       <header>
-        <div class="well">Notely
+        <div class="welcome">Notely
           <ul class="list-inline">
             <li><a href="#map"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="#view1"><i class="view1"></i> view1</a></li>
@@ -45,10 +45,10 @@
     <div class="row">
       <div class="col-xs-4">
         <nav id="sidebar" >
-          <div class="well">
+          <div class="notes">
             SIDEBAR
             <ul >
-              <button ng-click="circle.doClick()"> circle anim</button>
+              <button ng-controller="MapController" ng-click="circle()" class="btn btn-default btn-sm "> circle anim</button>
             </ul>
 
           </div>
@@ -56,11 +56,11 @@
       </div>
       <div class="col-xs-8">
         <main >
-          <div class="well">
+          <div class="welcome">
             <!-- BEGIN main content -->
-            <div id="main" ng-view ng-show="visible">
-
-
+            <div id="main" ng-view  >
+              <div id="circleMain">
+              </div>
             </div>
             <!-- END main content -->
           </div>

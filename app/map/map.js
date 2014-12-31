@@ -12,11 +12,19 @@ angular.module('myApp.map', ['ngRoute'])
 
 
 
-.controller('MapController', function($scope) {
+.controller('MapController',['$scope', function($scope) {
 
   var circle = {};
 
-  $scope.circle = function doClick () {
+  $scope.circle = function () {
+
+
+
+
+
+
+
+
 
 // start scale and transition example
 
@@ -98,7 +106,8 @@ angular.module('myApp.map', ['ngRoute'])
 
 
         //Create SVG element
-        var svg = d3.select("#main")
+        d3.select('#circleMain').selectAll('*').remove();
+        var svg = d3.select("#circleMain")
               .append("svg")
               .attr("width", w)
               .attr("height", h);
@@ -127,6 +136,7 @@ angular.module('myApp.map', ['ngRoute'])
            .attr("fill", function(d){
               return d.color;
            });
+
       };
 
-});
+}]);
