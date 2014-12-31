@@ -15,6 +15,11 @@ angular.module('myApp.map', ['ngRoute'])
 .controller('MapController',['$scope', function($scope) {
 
   var circle = {};
+  var circleDble ={};
+
+  $scope.circleDble = function (){
+    d3.select('#circleMain').selectAll('*').remove();
+  };
 
   $scope.circle = function () {
 
