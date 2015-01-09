@@ -14,7 +14,26 @@ body {
   padding-left: 0 !important;
   padding-right: 0 !important; }
 
+.list-inline {
+  margin-left:auto;
+  margin-right:auto;
+  width:1000px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
 header .well {
+
   padding-top: 5px;
   padding-bottom: 5px; }
   header .well .user-links {
@@ -96,7 +115,10 @@ ul#notes {
   padding: 0.25em; }
 
 #welcome h1 {
-  color: #bc141a; }
+  color: #bc141a;
+  margin-left:auto;
+  margin-right:auto;
+  width:1250px;  }
 #welcome main {
   margin: 0 auto;
   width: 360px; }

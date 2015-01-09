@@ -36,7 +36,8 @@ angular.module('myApp.map', ['ngRoute'])
 
 
       var w = 500;
-      var h = 100;
+      var h = 300;
+      var padding = 40;
       var dataset = [
               {
                 x: 5,
@@ -102,12 +103,21 @@ angular.module('myApp.map', ['ngRoute'])
 
         var xScale = d3.scale.linear()
                    .domain([0, d3.max(dataset, function(d) { return d.x; })])
-                   .range([0, w]);
+                   .range([padding, w - padding]);
 
         var yScale = d3.scale.linear()
                    .domain([0, d3.max(dataset, function(d) { return d.y; })])
-                   .range([0, h]);
+                   .range([h - padding, padding]);
 
+        var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient("bottom")
+                    .ticks(5);
+
+        var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient("left")
+                    .ticks(5);
 
 
         //Create SVG element
@@ -117,7 +127,9 @@ angular.module('myApp.map', ['ngRoute'])
               .attr("width", w)
               .attr("height", h);
 
-            svg.selectAll("circle")
+            svg.append("g")
+           .attr("id","circles")
+           .selectAll("circle")
            .data(dataset)
            .enter()
            .append("circle")
@@ -125,7 +137,12 @@ angular.module('myApp.map', ['ngRoute'])
            .attr("cy", h / 2)
            .attr("r", 1)
            .attr("fill", function(d){
-             return d.color;
+             //return d.color;
+             if (xScale(d.x) < w /2) {
+               return "blue";
+             }else {
+               return d.color;
+             }
            })
            .transition()
            .duration(5000)
@@ -139,8 +156,27 @@ angular.module('myApp.map', ['ngRoute'])
              return yScale(d.y);
            })
            .attr("fill", function(d){
-              return d.color;
+               if (xScale(d.x) < w /2) {
+                 return "blue";
+               }else {
+                 return d.color;
+               }
+
            });
+
+           svg.append("g")
+                .transition()
+                .duration(500)
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + (h - padding + 5) + ")")
+                .call(xAxis);
+
+          svg.append("g")
+                .transition()
+                .duration(500)
+                .attr("class", "y axis")
+                .attr("transform", "translate(" + (padding - 5) + ",0)")
+                .call(yAxis);
 
       };
 
